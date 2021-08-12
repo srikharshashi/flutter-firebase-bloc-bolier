@@ -1,5 +1,6 @@
 import 'package:bloc_custom_firebase/logic/bloc/login/login_cubit.dart';
 import 'package:bloc_custom_firebase/logic/bloc/logout/logout_cubit.dart';
+import 'package:bloc_custom_firebase/logic/bloc/register/register_cubit.dart';
 import 'package:bloc_custom_firebase/logic/bloc/splash/splashscreen_cubit.dart';
 import 'package:bloc_custom_firebase/router.dart';
 import 'package:bloc_custom_firebase/services/repository.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => SplashscreenCubit(repossitory: Repossitory())),
         BlocProvider(create: (context) => LoginCubit(repository: Repossitory(),)),
         BlocProvider(create: (context) => LogoutCubit(repossitory: Repossitory())),
+        BlocProvider(create: (context)=> RegisterCubit(repossitory: Repossitory())),
 
       ],
       child: MaterialApp(

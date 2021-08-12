@@ -1,8 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_custom_firebase/services/repository.dart';
-import 'package:equatable/equatable.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState>
@@ -11,10 +8,7 @@ class LoginCubit extends Cubit<LoginState>
 
   LoginCubit({required this.repository}) : super(LoginInitial()) ;
 
-  void listen_to_firebase()
-  {
 
-  }
 
   void signin(String email,String password)
   {

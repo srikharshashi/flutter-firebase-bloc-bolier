@@ -3,6 +3,7 @@ import 'package:bloc_custom_firebase/logic/bloc/login/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -93,8 +94,8 @@ class _LoginScreenState extends State<LoginScreen> {
                            );
                          }
                        else {
-                         return ElevatedButton(
-                           onPressed: () {
+                         return InkWell(
+                           onTap: () {
                              if (_emailcontroller.text != null &&
                                  _passwordcontroller.text != null)
                                BlocProvider.of<LoginCubit>(context).signin(
@@ -103,6 +104,8 @@ class _LoginScreenState extends State<LoginScreen> {
                              else
                                print("abc");
 
+                             //This was straight out of google I copied from
+                             //Lmao
                              FocusScopeNode currentFocus = FocusScope.of(context);
 
                              if (!currentFocus.hasPrimaryFocus) {
@@ -110,10 +113,28 @@ class _LoginScreenState extends State<LoginScreen> {
                              }
 
                            },
-                           child: Text("Login"),
-                           style: ButtonStyle(
-                             elevation: MaterialStateProperty.all(0.0),
+                           child: Container(
+                           height: 35,
+                           width: 20,
+                           child: Center(
+                             child: Row(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                               children: [
+                                 Icon(FontAwesomeIcons.signInAlt, size: 20,),
+                                 SizedBox(width: 10,),
+                                 Text("Login",
+                                   style: TextStyle(
+                                       fontWeight: FontWeight.bold
+                                   ),
+                                 ),
+                               ],
+                             ),
                            ),
+                           decoration: BoxDecoration(
+                               border: Border.all(color: Colors.black),
+                               borderRadius: BorderRadius.circular(20)
+                           ),
+                         ),
                          );
                        }
                       },
@@ -121,20 +142,61 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 80.0,vertical: 30),
-                    child: ElevatedButton(onPressed: (){
+                    child: InkWell(onTap: (){
                       Navigator.pushNamed(context, REGISTER_PAGE);
-                    }, child: Text("Register"),style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(0.0),
+                    }, child: Container(
+                      height: 35,
+                      width: 20,
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(FontAwesomeIcons.key, size: 20,),
+                            SizedBox(width: 10,),
+                            Text("Register",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(20)
+                      ),
                     ),),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 80.0,vertical: 30),
-                    child: ElevatedButton(onPressed: (){
-                      BlocProvider.of<LoginCubit>(context).signinwithgoogle();
-                    }, child: Text("Login with Google"),style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(0.0),
-                    ),),
-                  )
+                    padding: const EdgeInsets.symmetric(horizontal: 80.0),
+                    child: InkWell(
+                      onTap: (){
+                        BlocProvider.of<LoginCubit>(context).signinwithgoogle();
+                      },
+                      child: Container(
+                        height: 35,
+                        width: 20,
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(FontAwesomeIcons.google,size: 20,),
+                              SizedBox(width: 10,),
+                              Text("Login with Google",
+                                style: TextStyle(
+                                fontWeight: FontWeight.bold
+                                ),
+                      ),
+                            ],
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(20)
+                        ),
+                      ),),
+                    ),
+
                 ],
               ),
             ),
