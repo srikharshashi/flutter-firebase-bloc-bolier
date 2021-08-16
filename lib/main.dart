@@ -18,16 +18,16 @@ void main()  {
 
 class MyApp extends StatelessWidget {
   final AppRouter appRouter=AppRouter();
-  final Repossitory repossitory=Repossitory();
+  final FB_Service fb_service=FB_Service();
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => SplashscreenCubit(repossitory: Repossitory())),
-        BlocProvider(create: (context) => LoginCubit(repository: Repossitory(),)),
-        BlocProvider(create: (context) => LogoutCubit(repossitory: Repossitory())),
-        BlocProvider(create: (context)=> RegisterCubit(repossitory: Repossitory())),
+        BlocProvider(create: (context) => SplashscreenCubit(fb_service: FB_Service())),
+        BlocProvider(create: (context) => LoginCubit(fb_service: FB_Service(),)),
+        BlocProvider(create: (context) => LogoutCubit(repossitory: FB_Service())),
+        BlocProvider(create: (context)=> RegisterCubit(fb_service: FB_Service())),
 
       ],
       child: MaterialApp(

@@ -4,16 +4,16 @@ part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState>
 {
-  Repossitory repository;
+  FB_Service fb_service;
 
-  LoginCubit({required this.repository}) : super(LoginInitial()) ;
+  LoginCubit({required this.fb_service}) : super(LoginInitial()) ;
 
 
 
   void signin(String email,String password)
   {
     emit(LoginLoad());
-    repository.signin(email, password).then((value)
+    fb_service.signin(email, password).then((value)
     {
       if(value)
         {
@@ -33,7 +33,7 @@ class LoginCubit extends Cubit<LoginState>
   {
     emit(LoginLoad());
 
-    repository.signInWithGoogle().then((value)
+    fb_service.signInWithGoogle().then((value)
     {
       if(value)
       {

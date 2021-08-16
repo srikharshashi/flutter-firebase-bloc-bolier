@@ -7,9 +7,9 @@ part 'splashscreen_state.dart';
 
 class SplashscreenCubit extends Cubit<SplashscreenState> {
 
-  Repossitory repossitory;
+  FB_Service fb_service;
 
-  SplashscreenCubit({required this.repossitory })
+  SplashscreenCubit({required this.fb_service })
       : super(SplashscreenLoading())
   {
     print("In cubit constructor");
@@ -19,7 +19,7 @@ class SplashscreenCubit extends Cubit<SplashscreenState> {
 
   void initialize() async  {
     print("In splashscreen cubit");
-     await repossitory.initializeFirebase();
+     await fb_service.initializeFirebase();
      await Future.delayed(Duration(seconds: 3));
     var connectivityResult = await (Connectivity().checkConnectivity());
 
@@ -27,7 +27,7 @@ class SplashscreenCubit extends Cubit<SplashscreenState> {
       emit(ConnectivityError());
     }
 
-    if(repossitory.checkSignin())
+    if(fb_service.checkSignin())
       emit(Loggedin());
     else
       emit(UnAuthenticated());

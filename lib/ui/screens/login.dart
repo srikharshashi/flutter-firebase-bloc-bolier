@@ -96,8 +96,9 @@ class _LoginScreenState extends State<LoginScreen> {
                        else {
                          return InkWell(
                            onTap: () {
+                             bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(_emailcontroller.text);
                              if (_emailcontroller.text != null &&
-                                 _passwordcontroller.text != null)
+                                 _passwordcontroller.text != null && emailValid)
                                BlocProvider.of<LoginCubit>(context).signin(
                                    _emailcontroller.text.trim(),
                                    _passwordcontroller.text.trim());

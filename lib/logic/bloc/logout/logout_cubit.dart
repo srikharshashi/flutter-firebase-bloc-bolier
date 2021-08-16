@@ -6,7 +6,7 @@ part 'logout_state.dart';
 
 class LogoutCubit extends Cubit<LogoutState> {
   LogoutCubit({required this.repossitory}) : super(LogoutInitial());
-Repossitory repossitory;
+FB_Service repossitory;
 
   void logout() async{
   bool result=await repossitory.logout();
